@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SPA notas Estudiantes</title>
-    <link rel="stylesheet" href="style.css">
+    <!-- ✅ corregido: nombre correcto del CSS -->
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <header>
@@ -36,6 +37,7 @@
             <button type="submit">Guardar</button>
         </form>
         <p id="message"></p>
+        <button onclick="deleteStudents()">🗑 Borrar todos</button>
     </template>
        
     <template id="list-template">
@@ -56,11 +58,7 @@
         <p>Page not found</p>
     </template>
 
+    <!-- script principal -->
     <script src="app.js"></script>
 </body>
 </html>
-<script>
-function deleteStudents() {
-    localStorage.removeItem('students');
-}
-</script>

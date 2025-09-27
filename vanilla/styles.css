@@ -6,7 +6,7 @@ body {
 }
 
 header {
-  background: #4caf50;
+  background: #af4c51;
   color: white;
   padding: 1rem;
   text-align: center;
@@ -51,7 +51,7 @@ li {
 }
 
 .delete-btn {
-  /* background: #e74c3c; */
+  background: #e74c3c; /* ✅ ahora visible */
   color: white;
   border: none;
   cursor: pointer;

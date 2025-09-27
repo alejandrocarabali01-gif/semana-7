@@ -19,6 +19,11 @@ function deleteStudent(index) {
     renderList();
 }
 
+function deleteStudents() {
+    localStorage.removeItem('students');
+    renderList();
+}
+
 function router() {
     const path = location.hash.slice(1) || "/";
     const app = document.getElementById("app");
@@ -36,6 +41,7 @@ function router() {
 
     const template = document.getElementById(templateId);
     app.appendChild(template.content.cloneNode(true));
+
     if (path === "/") {
         attachFormLogic();
     } else if (path === "/lista") {
@@ -54,14 +60,18 @@ function attachFormLogic() {
         const n3 = parseFloat(document.getElementById("nota3").value);
 
         if (!name || isNaN(n1) || isNaN(n2) || isNaN(n3)) {
-            document.getElementById("message").textContent = "Por favor, complete todos los campos correctamente.";
+            document.getElementById("message").textContent =
+                "⚠️ Por favor, complete todos los campos correctamente.";
             return;
         }
 
         const average = ((n1 + n2 + n3) / 3);
         saveStudent({ name, average });
 
-        document.getElementById("message").textContent = ✅ Estudiante ${name} con promedio ${average.toFixed(2)} guardado.;
+        // ✅ corregido: uso de backticks
+        document.getElementById("message").textContent =
+            `✅ Estudiante ${name} con promedio ${average.toFixed(2)} guardado.`;
+
         form.reset();
     });
 }
@@ -93,7 +103,6 @@ function renderList() {
 
         list.appendChild(clone);
     });
-
 }
 
 window.addEventListener("hashchange", router);
